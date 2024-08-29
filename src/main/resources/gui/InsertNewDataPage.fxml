@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InsertNewDataController">
+   <children>
+      <Button layoutX="447.0" layoutY="304.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="98.0" text="完成" onAction="#hitfinishbutton"/>
+      <TextField fx:id="pdfield" layoutX="162.0" layoutY="108.0" prefHeight="27.0" prefWidth="285.0" />
+      <TextField fx:id="profitfield" layoutX="162.0" layoutY="173.0" prefHeight="27.0" prefWidth="285.0" />
+      <Label layoutX="83.0" layoutY="113.0" text="商品名稱" />
+      <Label layoutX="99.0" layoutY="178.0" text="獲利" />
+   </children>
+</AnchorPane>
