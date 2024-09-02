@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainPageController">
    <children>
-      <SplitPane dividerPositions="0.6" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
+            <ImageView fx:id="AlogorithmAnimation" fitHeight="195.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" />
             <GridPane>
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,7 +29,7 @@
                     </rowConstraints>
                      <children>
                         <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="302.0" text="執行演算法" />
-                        <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="302.0" text="離開程式" textAlignment="CENTER" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#AnmationButtonClick" prefHeight="98.0" prefWidth="302.0" text="顯示動畫" textAlignment="CENTER" GridPane.columnIndex="1">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -51,9 +46,9 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="302.0" text="新增資料" onAction="#InsertDataButtonClick" />
+                        <Button mnemonicParsing="false" onAction="#InsertDataButtonClick" prefHeight="98.0" prefWidth="302.0" text="新增資料" />
                         <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="302.0" text="刪除資料" GridPane.columnIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="302.0" text="顯示資料" GridPane.columnIndex="2" onAction= "#FileViewerButtonClick" />
+                        <Button mnemonicParsing="false" onAction="#FileViewerButtonClick" prefHeight="98.0" prefWidth="302.0" text="顯示資料" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                </children>
