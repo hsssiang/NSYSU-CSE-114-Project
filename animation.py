@@ -70,6 +70,10 @@ print("Gains:", gains)
 
 G = nx.DiGraph()
 level = len(patterns)
+path = 'level.txt'
+f = open(path, 'w')
+f.write(str(level - 1))
+f.close()
 for current_level in range ( 2, level + 1 ):
     # 添加節點及其位置
     positions_list = []
