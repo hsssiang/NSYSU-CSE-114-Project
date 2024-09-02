@@ -2,7 +2,7 @@ import re
 import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.patches import FancyBboxPatch
-
+from PIL import Image
 # 定義讀取檔案的函數
 def read_patterns(filename):
     patterns = []
@@ -74,6 +74,7 @@ path = 'level.txt'
 f = open(path, 'w')
 f.write(str(level - 1))
 f.close()
+png_file = []
 for current_level in range ( 2, level + 1 ):
     # 添加節點及其位置
     positions_list = []
@@ -121,5 +122,21 @@ for current_level in range ( 2, level + 1 ):
     nx.draw(G, pos=positions, with_labels=True, labels=labels, node_size=2000, node_color='lightgrey', font_size=10, font_color='black', font_weight='bold')
     plt.title("Graph Representation")
     output_file = "output_image_" + str(current_level-1) + ".png"
+    png_file.append(output_file)
     plt.savefig( output_file , format='png')  # 儲存為 PNG 格式，路徑為當前目錄
-    plt.show()
+
+frames = [Image.open(png_file[0])]
+
+# 打開其餘的圖片並添加到 frames 中
+for png_file in png_file[1:]:
+    img = Image.open(png_file)
+    frames.append(img)
+
+# 保存為 GIF 動畫
+frames[0].save(
+    "output_gif.gif",
+    save_all=True,
+    append_images=frames[1:],
+    duration=1000,  # 設定每幀持續的時間（毫秒）
+    loop=0  # 設定循環次數，0 代表無限循環
+)
