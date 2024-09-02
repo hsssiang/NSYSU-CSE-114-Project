@@ -6,10 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.charset.StandardCharsets;
 import java.io.IOException;
-
-import static java.lang.Thread.sleep;
 
 public class MainPageController {
     @FXML
@@ -27,12 +24,12 @@ public class MainPageController {
 
 //    int current_display = 1;
     @FXML
-    protected void AnmationButtonClick() throws IOException, InterruptedException {
+    protected void AnmationButtonClick() throws IOException {
         // 載入圖片並設置到ImageView
         // String content = new String(Files.readAllBytes(Paths.get("level.txt")), StandardCharsets.UTF_8).trim();
         // 將讀取的內容轉換為整數
         //int level = Integer.parseInt(content);
-        String imagepath = "output_gif.png";
+        String imagepath = "output_gif.gif";
         Image image = new Image(Files.newInputStream(Paths.get(imagepath)));
         AlogorithmAnimation.setImage(image);
         //current_display++;
