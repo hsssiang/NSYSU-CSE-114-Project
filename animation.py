@@ -120,6 +120,6 @@ for current_level in range ( 2, level + 1 ):
     plt.figure(figsize=(10, 6))
     nx.draw(G, pos=positions, with_labels=True, labels=labels, node_size=2000, node_color='lightgrey', font_size=10, font_color='black', font_weight='bold')
     plt.title("Graph Representation")
-    output_file = "output_image_" + str(current_level) + ".png"
+    output_file = "output_image_" + str(current_level-1) + ".png"
     plt.savefig( output_file , format='png')  # 儲存為 PNG 格式，路徑為當前目錄
     plt.show()
