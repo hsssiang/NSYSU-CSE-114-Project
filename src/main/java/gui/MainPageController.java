@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 
+import static java.lang.Thread.sleep;
+
 public class MainPageController {
     @FXML
     private ImageView AlogorithmAnimation;
@@ -23,22 +25,19 @@ public class MainPageController {
         FileViewer.start(new Stage());
     }
 
+//    int current_display = 1;
     @FXML
-    protected void AnmationButtonClick() throws IOException {
+    protected void AnmationButtonClick() throws IOException, InterruptedException {
         // 載入圖片並設置到ImageView
-        String content = new String(Files.readAllBytes(Paths.get("level.txt")), StandardCharsets.UTF_8).trim();
+        // String content = new String(Files.readAllBytes(Paths.get("level.txt")), StandardCharsets.UTF_8).trim();
         // 將讀取的內容轉換為整數
-        int level = Integer.parseInt(content);
-        System.out.println(level);
-        String imagepath = "output_image_" + 2 + ".png";
-        System.out.println(imagepath);
-        while (level > 0) {
-            for (int i = 1; i < level; i++) {
-                imagepath = "output_image_" + level + ".png";
-                System.out.println(imagepath);
-                Image image = new Image(Files.newInputStream(Paths.get(imagepath)));
-                AlogorithmAnimation.setImage(image);
-            }
-        }
+        //int level = Integer.parseInt(content);
+        String imagepath = "output_gif.png";
+        Image image = new Image(Files.newInputStream(Paths.get(imagepath)));
+        AlogorithmAnimation.setImage(image);
+        //current_display++;
+        //if (current_display > level) {
+        //    current_display = 1;
+        //}
     }
 }
