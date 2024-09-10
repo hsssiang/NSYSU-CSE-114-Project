@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 // 2024.07.06 @ HUAN : EI_list的型態也是EP，但名字還是EI
 // 2024.07.25 @ 窩肥 : 新增pattern_mining_result留下的結果
 public class Main {
@@ -25,7 +24,6 @@ public class Main {
         ArrayList<EP> EI_list = new ArrayList<>();
 
         Construct_PDB(LINE_table, EI_list, Product_DB); // After this function, we get LINE_table, EI_list according to previous Database.
-
         // Calculate MGT (ps.已經當參數傳入了)
 
         // 把EI_list中小於MGT的item放進新的EI_list_new
@@ -99,6 +97,7 @@ public class Main {
         show_LINE_table(LINE_table, "LINE_table");
         // 印出EI_list內容
         show_EI(EI_list, "EI_list");
+        whole_EI_list_output(null, EI_list);
     }
 
     public static ArrayList<EP> Mine_Patterns(ArrayList<LINE_table> LINE_table, ArrayList<EP> EP_list_input, int MGT, ArrayList<EP>R){
@@ -165,7 +164,8 @@ public class Main {
         }
         show_EP(EP_list_total, "EP_list_remain");   // Total在此階段儲存小於MGT的ep
         if(EP_list_total.size() != 1){
-            pattern_mining_result_output_file(EP_list_total);
+            whole_EI_list_output(EP_list_total, null);
+            //pattern_mining_result_output_file(EP_list_total);
             Mine_Patterns(LINE_table, EP_list_total, MGT, R);}
         return R;
     }
@@ -209,7 +209,7 @@ public class Main {
 ////                                                 ////
 /////////////////////////////////////////////////////////
     public static ArrayList<Product> input_file(){
-        String InfileName = "/Users/jimmywang/Desktop/114專題/JAVA/GUI-Aug-2024/src/main/java/database_2.txt";
+        String InfileName = "database_2.txt";
         // Build DataBase
         ArrayList<Product> Product_DB = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(InfileName))) {
@@ -248,13 +248,13 @@ public class Main {
         return null;
     }
 
-    public static String[] EIoutput_file(ArrayList<EI> EI_list){
+    public static String[] EIoutput_file(ArrayList<EP> EI_list){
         String EI_list_fileName = "EI_list.txt";
         try (FileWriter writer = new FileWriter(EI_list_fileName)) {
             // 寫入檔案
-            writer.write("<EI_list>"+ System.lineSeparator()+ "item\tPID\tgain" + System.lineSeparator());
-            for(EI ei:EI_list){
-                writer.write(ei.item + "\t" + ei.PIDs + "\t" + ei.gain + System.lineSeparator());
+            writer.write( "item\tPID\tgain" + System.lineSeparator());
+            for(EP ei:EI_list){
+                writer.write(ei.pattern + "\t" + ei.dPIDs + "\t" + ei.gain + System.lineSeparator());
             }
         }
         catch (IOException e) {
@@ -290,6 +290,36 @@ public class Main {
             first_open = false;
         }
         if(R.size() != 0){
+            try (FileWriter writer = new FileWriter(R_fileName,true)) { //續寫
+                writer.write("pattern\t\tPIDs\t\tgain" + System.lineSeparator());
+                for(EP ep:R){
+                    writer.write(ep.pattern + "\t" + ep.dPIDs + "\t" + ep.gain + System.lineSeparator());
+                }
+                writer.write("----------------------------------" + System.lineSeparator());
+            }
+            catch (IOException e) {
+                System.out.println("發生錯誤: " + e.getMessage());
+            }
+        }
+        return null;
+    }
+    public static String[] whole_EI_list_output(ArrayList<EP> R , ArrayList<EP>EI_list){
+        String R_fileName = "pattern_mining_result.txt";
+        if(first_open){
+            try {
+                FileWriter writer = new FileWriter(R_fileName, false); // 覆寫模式，清空文件
+                    writer.write( "item\tPID\tgain" + System.lineSeparator());
+                for(EP ei:EI_list){
+                    writer.write(ei.pattern + "\t" + ei.dPIDs + "\t" + ei.gain + System.lineSeparator());
+                }
+                writer.close();
+            }   
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            first_open = false;
+        }
+        else{
             try (FileWriter writer = new FileWriter(R_fileName,true)) { //續寫
                 writer.write("pattern\t\tPIDs\t\tgain" + System.lineSeparator());
                 for(EP ep:R){
