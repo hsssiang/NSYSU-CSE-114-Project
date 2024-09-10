@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class FileViewerController {
     public static ObservableList<gui.FileReader> input_file(){
-        String InfileName = "/Users/jimmywang/Desktop/114專題/JAVA/GUI-Aug-2024/src/main/java/database_2.txt";
+        String InfileName = "database_2.txt";
         ArrayList<gui.FileReader> FileReaderDB = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(InfileName))) {
             String line;
