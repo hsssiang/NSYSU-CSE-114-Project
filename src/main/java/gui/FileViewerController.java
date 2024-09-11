@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedReader;
@@ -49,7 +50,21 @@ public class FileViewerController {
     private TableColumn<gui.FileReader, Integer> pidColumn;
 
     @FXML
+    private TextField delfield;
+
+    @FXML
     public void initialize() {
+        pidColumn.setCellValueFactory(new PropertyValueFactory<>("Pid"));
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("Product"));
+        profitColumn.setCellValueFactory(new PropertyValueFactory<>("Profit"));
+        tableView.setItems( input_file() );
+    }
+    @FXML
+    protected void hitdelbutton() {
+        // 獲取輸入框的文本
+        String index = delfield.getText();
+        DelData delData = new DelData();
+        delData.insert(index);
         pidColumn.setCellValueFactory(new PropertyValueFactory<>("Pid"));
         productColumn.setCellValueFactory(new PropertyValueFactory<>("Product"));
         profitColumn.setCellValueFactory(new PropertyValueFactory<>("Profit"));

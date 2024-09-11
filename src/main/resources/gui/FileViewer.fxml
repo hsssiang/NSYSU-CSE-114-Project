@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FileViewerController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FileViewerController">
    <children>
-      <TableView fx:id="tableView" layoutX="251.0" prefHeight="401.0" prefWidth="349.0">
+      <TableView fx:id="tableView" layoutX="188.0" prefHeight="401.0" prefWidth="412.0">
         <columns>
           <TableColumn fx:id="pidColumn" prefWidth="75.0" text="PID" />
           <TableColumn fx:id="productColumn" prefWidth="75.0" text="Product" />
@@ -15,26 +14,18 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <VBox layoutX="33.0" layoutY="89.0" prefHeight="200.0" prefWidth="179.0">
+      <GridPane alignment="CENTER" layoutX="2.0" layoutY="150.0" prefHeight="40.0" prefWidth="188.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <GridPane prefHeight="201.0" prefWidth="100.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="85.0" minWidth="10.0" prefWidth="70.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="109.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="73.0" text="Maxium" />
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="73.0" text="Minimun" GridPane.rowIndex="1" />
-                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="73.0" text="Total" GridPane.rowIndex="2" />
-               </children>
-            </GridPane>
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="188.0" text="請輸入想刪除的PID編號" />
          </children>
-      </VBox>
+      </GridPane>
+      <TextField fx:id="delfield" alignment="CENTER" layoutX="31.0" layoutY="186.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="130.0" />
+      <Button onAction = "#hitdelbutton" layoutX="69.0" layoutY="222.0" mnemonicParsing="false" text="Delete" />
    </children>
 </AnchorPane>
