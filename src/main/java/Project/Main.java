@@ -14,7 +14,7 @@ import java.io.IOException;
 // 2024.07.25 @ 窩肥 : 新增pattern_mining_result留下的結果
 public class Main {
     static boolean first_open = true;
-    public static void main(String[] argv) {
+    public static void main() {
         Main_Procedure(1600);
     }
     public static ArrayList<Character> Main_Procedure(int MGT){
@@ -309,10 +309,12 @@ public class Main {
             try {
                 FileWriter writer = new FileWriter(R_fileName, false); // 覆寫模式，清空文件
                     writer.write( "pattern\t\tPIDs\t\tgain" + System.lineSeparator());
-                for(EP ei:EI_list){
-                    writer.write(ei.pattern + "\t" + ei.dPIDs + "\t" + ei.gain + System.lineSeparator());
+                if (EI_list != null){
+                    for(EP ei:EI_list){
+                        writer.write(ei.pattern + "\t" + ei.dPIDs + "\t" + ei.gain + System.lineSeparator());
+                    }
+                    writer.write("----------------------------------" + System.lineSeparator());
                 }
-                writer.write("----------------------------------" + System.lineSeparator());
                 writer.close();
             }   
             catch (IOException e) {
@@ -323,10 +325,12 @@ public class Main {
         else{
             try (FileWriter writer = new FileWriter(R_fileName,true)) { //續寫
                 writer.write("pattern\t\tPIDs\t\tgain" + System.lineSeparator());
-                for(EP ep:R){
-                    writer.write(ep.pattern + "\t" + ep.dPIDs + "\t" + ep.gain + System.lineSeparator());
+                if ( R != null){
+                    for(EP ep:R){
+                        writer.write(ep.pattern + "\t" + ep.dPIDs + "\t" + ep.gain + System.lineSeparator());
+                    }
+                    writer.write("----------------------------------" + System.lineSeparator());
                 }
-                writer.write("----------------------------------" + System.lineSeparator());
             }
             catch (IOException e) {
                 System.out.println("發生錯誤: " + e.getMessage());

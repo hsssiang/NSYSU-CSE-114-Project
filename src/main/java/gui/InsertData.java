@@ -11,7 +11,7 @@ public class InsertData {
     }
     public void insert(String PDName, String profit) {
         int index = 0;
-        String FileName = "/Users/jimmywang/Desktop/114專題/JAVA/GUI-Aug-2024/src/main/java/database_2.txt";
+        String FileName = "database_2.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(FileName))) {
             String line;
             while ((line = br.readLine()) != null) {

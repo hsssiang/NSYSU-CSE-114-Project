@@ -4,9 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
+import Project.Main;
 
 public class MainPageController {
     @FXML
@@ -36,5 +40,10 @@ public class MainPageController {
         //if (current_display > level) {
         //    current_display = 1;
         //}
+    }
+    @FXML
+    protected void AlgorithmButtonClick() throws IOException {
+        Main.main();
+        CallPythonScript.main();
     }
 }

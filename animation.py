@@ -61,9 +61,9 @@ def read_patterns(filename):
 filename = 'pattern_mining_result.txt'
 patterns, pids, gains = read_patterns(filename)
 
-print("Patterns:", patterns)
-print("PIDs:", pids)
-print("Gains:", gains)
+# print("Patterns:", patterns)
+# print("PIDs:", pids)
+# print("Gains:", gains)
 
 
 G = nx.DiGraph()
@@ -110,7 +110,7 @@ for current_level in range ( 2, level + 1 ):
 
     G.add_edges_from(edges)
 
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(30, 15))
     nx.draw(G, pos=positions, with_labels=True, labels=labels, node_size=2000, node_color='lightgrey', font_size=10, font_color='black', font_weight='bold')
     plt.title("Graph Representation")
     output_file = "output_image_" + str(current_level-1) + ".png"
