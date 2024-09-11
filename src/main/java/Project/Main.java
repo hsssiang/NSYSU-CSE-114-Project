@@ -308,10 +308,11 @@ public class Main {
         if(first_open){
             try {
                 FileWriter writer = new FileWriter(R_fileName, false); // 覆寫模式，清空文件
-                    writer.write( "item\tPID\tgain" + System.lineSeparator());
+                    writer.write( "pattern\t\tPIDs\t\tgain" + System.lineSeparator());
                 for(EP ei:EI_list){
                     writer.write(ei.pattern + "\t" + ei.dPIDs + "\t" + ei.gain + System.lineSeparator());
                 }
+                writer.write("----------------------------------" + System.lineSeparator());
                 writer.close();
             }   
             catch (IOException e) {
