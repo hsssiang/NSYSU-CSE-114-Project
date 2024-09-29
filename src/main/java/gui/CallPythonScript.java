@@ -12,7 +12,7 @@ public class CallPythonScript {
         try {
             // 建立 ProcessBuilder 並設定命令
             ProcessBuilder builder = new ProcessBuilder(
-                    "py", "animation.py"
+                    "python3", "animation.py"
             );
 
             // 開始進程

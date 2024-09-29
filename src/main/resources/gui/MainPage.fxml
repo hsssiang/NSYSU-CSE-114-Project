@@ -6,60 +6,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainPageController">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainPageController">
    <children>
-      <GridPane prefHeight="1080.0" prefWidth="1920.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-             <ImageView fx:id="AlogorithmAnimation" fitHeight="500.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true" />
-             <GridPane GridPane.rowIndex="1">
-                 <columnConstraints>
-                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                 </columnConstraints>
-                 <rowConstraints>
-                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                 </rowConstraints>
-                 <children>
-                     <GridPane GridPane.rowIndex="1">
-                         <columnConstraints>
-                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                         </columnConstraints>
-                         <rowConstraints>
-                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                         </rowConstraints>
-                         <children>
-                             <Button mnemonicParsing="false" onAction="#AlgorithmButtonClick" prefHeight="98.0" prefWidth="302.0" text="執行演算法" />
-                             <Button mnemonicParsing="false" onAction="#AnmationButtonClick" prefHeight="98.0" prefWidth="302.0" text="顯示動畫" textAlignment="CENTER" GridPane.columnIndex="1">
-                                 <font>
-                                     <Font size="14.0" />
-                                 </font>
-                             </Button>
-                         </children>
-                     </GridPane>
-                     <GridPane>
-                         <columnConstraints>
-                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                         </columnConstraints>
-                         <rowConstraints>
-                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                         </rowConstraints>
-                         <children>
-                             <Button mnemonicParsing="false" onAction="#InsertDataButtonClick" prefHeight="98.0" prefWidth="302.0" text="新增資料" />
-                             <Button mnemonicParsing="false" onAction="#FileViewerButtonClick" prefHeight="98.0" prefWidth="302.0" text="顯示資料" GridPane.columnIndex="1" />
-                         </children>
-                     </GridPane>
-                 </children>
-             </GridPane>
+             <ImageView fx:id="AlogorithmAnimation" fitHeight="700.0" fitWidth="1920.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+            </ImageView>
          </children>
-      </GridPane>
+      </StackPane>
+         <GridPane prefHeight="150.0" prefWidth="1920.0">
+             <columnConstraints>
+                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+             </columnConstraints>
+             <rowConstraints>
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+             </rowConstraints>
+             <children>
+                 <Button mnemonicParsing="false" onAction="#InsertDataButtonClick" prefHeight="247.0" prefWidth="576.0" text="Insert Data">
+               <font>
+                  <Font name="Chalkboard" size="36.0" />
+               </font>
+            </Button>
+                 <Button mnemonicParsing="false" onAction="#FileViewerButtonClick" prefHeight="205.0" prefWidth="606.0" text="Display Data" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Chalkboard" size="36.0" />
+               </font>
+            </Button>
+                 <Button mnemonicParsing="false" onAction="#AlgorithmButtonClick" prefHeight="182.0" prefWidth="652.0" text="Execute" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Chalkboard" size="36.0" />
+               </font>
+            </Button>
+                 <Button mnemonicParsing="false" onAction="#AnmationButtonClick" prefHeight="184.0" prefWidth="597.0" text="Animation" textAlignment="CENTER" GridPane.columnIndex="3">
+                     <font>
+                         <Font name="Chalkboard" size="36.0" />
+                     </font>
+                 </Button>
+             </children>
+         </GridPane>
    </children>
-</AnchorPane>
+</VBox>

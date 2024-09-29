@@ -111,7 +111,7 @@ for current_level in range ( 2, level + 1 ):
     G.add_edges_from(edges)
 
     plt.figure(figsize=(30, 15))
-    nx.draw(G, pos=positions, with_labels=True, labels=labels, node_size=2000, node_color='lightgrey', font_size=10, font_color='black', font_weight='bold')
+    nx.draw(G, pos=positions, with_labels=True, labels=labels, node_size=15000, node_color='lightgrey', font_size=40, font_color='black', font_weight='bold', width=4)
     plt.title("Graph Representation")
     output_file = "output_image_" + str(current_level-1) + ".png"
     png_file.append(output_file)

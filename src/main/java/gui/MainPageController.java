@@ -48,4 +48,11 @@ public class MainPageController {
         Main.main();
         CallPythonScript.main();
     }
+
+    public void initialize() throws IOException {
+        // 加載圖片到 ImageView 中
+        String imagepath = "output_gif.gif";
+        Image image = new Image(Files.newInputStream(Paths.get(imagepath)));
+        AlogorithmAnimation.setImage(image);
+    }
 }
