@@ -4,6 +4,7 @@ module org.example.guiaug2024 {
 
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
+    requires java.desktop;
 
     opens gui to javafx.fxml;
     exports gui;

@@ -43,11 +43,6 @@ public class MainPageController {
         //    current_display = 1;
         //}
     }
-    @FXML
-    protected void AlgorithmButtonClick() throws IOException {
-        Main.main();
-        CallPythonScript.main();
-    }
 
     public void initialize() throws IOException {
         // 加載圖片到 ImageView 中

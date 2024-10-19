@@ -14,8 +14,17 @@ import java.io.IOException;
 // 2024.07.25 @ 窩肥 : 新增pattern_mining_result留下的結果
 public class Main {
     static boolean first_open = true;
-    public static void main() {
-        Main_Procedure(1600);
+    public static void main( String[] args ) {
+        if (args.length > 0) {
+            try {
+                int MGT = Integer.parseInt(args[0]);
+                Main_Procedure(MGT);
+            } catch (NumberFormatException e) {
+                System.out.println("The first argument must be an integer.");
+            }
+        } else {
+            System.out.println("No arguments provided.");
+        }
     }
     public static ArrayList<Character> Main_Procedure(int MGT){
         System.out.println("⫸ Round 1 (Original database");
