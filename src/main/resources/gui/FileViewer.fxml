@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -22,10 +25,17 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" prefHeight="40.0" prefWidth="188.0" text="請輸入想刪除的PID編號" />
+            <Label alignment="CENTER" prefHeight="40.0" prefWidth="188.0" text="請輸入想刪除的PID編號">
+               <font>
+                  <Font name="YuKyokasho Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
       <TextField fx:id="delfield" alignment="CENTER" layoutX="31.0" layoutY="186.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="130.0" />
-      <Button onAction = "#hitdelbutton" layoutX="69.0" layoutY="222.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="66.0" layoutY="224.0" mnemonicParsing="false" onAction="#hitdelbutton" text="Delete">
+         <font>
+            <Font name="Chalkboard" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

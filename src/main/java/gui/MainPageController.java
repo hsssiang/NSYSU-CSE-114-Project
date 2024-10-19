@@ -27,6 +27,11 @@ public class MainPageController {
         gui.FileViewer FileViewer = new gui.FileViewer();
         FileViewer.start(new Stage());
     }
+    @FXML
+    protected void AlgorithmButtonClick() throws IOException {
+        gui.Algorithm Algorithm = new gui.Algorithm();
+        Algorithm.start(new Stage());
+    }
 
 //    int current_display = 1;
     @FXML

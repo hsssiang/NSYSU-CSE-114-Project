@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AlgorithmController">
    <children>
-      <Button layoutX="252.0" layoutY="281.0" mnemonicParsing="false" onAction= "#hitbutton" prefHeight="46.0" prefWidth="98.0" text="Finish">
+      <Button layoutX="238.0" layoutY="237.0" mnemonicParsing="false" onAction="#hitbutton" prefHeight="47.0" prefWidth="124.0" text="Execute">
          <font>
             <Font name="Chalkboard" size="24.0" />
          </font></Button>

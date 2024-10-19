@@ -3,6 +3,7 @@ package gui;
 import javafx.fxml.FXML;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -65,11 +66,22 @@ public class FileViewerController {
         String index = delfield.getText();
         DelData delData = new DelData();
         delData.insert(index);
+        showInfoAlert("Command Execution", "The data has been successfully delete.");
         pidColumn.setCellValueFactory(new PropertyValueFactory<>("Pid"));
         productColumn.setCellValueFactory(new PropertyValueFactory<>("Product"));
         profitColumn.setCellValueFactory(new PropertyValueFactory<>("Profit"));
         tableView.setItems( input_file() );
+        delfield.clear();
     }
 
+    private void showInfoAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);  // Optional: can leave header empty
+        alert.setContentText(content);
+
+        // Show the alert and wait for user response (modal dialog)
+        alert.showAndWait();
+    }
 
 }
