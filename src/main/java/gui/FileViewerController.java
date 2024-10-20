@@ -1,18 +1,18 @@
 package gui;
 
-import javafx.fxml.FXML;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class FileViewerController {
     public static ObservableList<gui.FileReader> input_file(){
@@ -52,6 +52,27 @@ public class FileViewerController {
 
     @FXML
     private TextField delfield;
+
+    @FXML
+    private TextField pdfield;
+    @FXML
+    private TextField profitfield;
+
+    @FXML
+    protected void hitfinishbutton() {
+        // 獲取輸入框的文本
+        String name = pdfield.getText();
+        String profit = profitfield.getText();
+        InsertData insertData = new InsertData();
+        insertData.insert(name, profit);
+        showInfoAlert("Command Execution", "The data has been successfully insert.");
+        pidColumn.setCellValueFactory(new PropertyValueFactory<>("Pid"));
+        productColumn.setCellValueFactory(new PropertyValueFactory<>("Product"));
+        profitColumn.setCellValueFactory(new PropertyValueFactory<>("Profit"));
+        tableView.setItems( input_file() );
+        pdfield.clear();
+        profitfield.clear();
+    }
 
     @FXML
     public void initialize() {

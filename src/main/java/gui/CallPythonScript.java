@@ -22,11 +22,29 @@ public class CallPythonScript {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                //System.out.println(line);
             }
 
             // 等待 Python 腳本執行完成
             process.waitFor();
+
+            ProcessBuilder builder2 = new ProcessBuilder(
+                    "python3", "outcome.py"
+            );
+
+            // 開始進程
+            Process process2 = builder2.start();
+
+            // 讀取 Python 腳本的輸出
+            BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
+            String line2;
+            while ((line2 = reader2.readLine()) != null) {
+                //System.out.println(line);
+            }
+
+            // 等待 Python 腳本執行完成
+            process.waitFor();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

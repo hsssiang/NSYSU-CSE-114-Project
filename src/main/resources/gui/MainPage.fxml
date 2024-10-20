@@ -10,8 +10,13 @@
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-             <ImageView fx:id="AlogorithmAnimation" fitHeight="700.0" fitWidth="1920.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+             <ImageView fx:id="AlogorithmAnimation" fitHeight="600.0" fitWidth="1920.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
             </ImageView>
+         </children>
+      </StackPane>
+      <StackPane maxHeight="100.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="Outcome" fitHeight="100.0" fitWidth="1920.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
          </children>
       </StackPane>
          <GridPane prefHeight="150.0" prefWidth="1920.0">
@@ -25,26 +30,26 @@
                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
              </rowConstraints>
              <children>
-                 <Button mnemonicParsing="false" onAction="#InsertDataButtonClick" prefHeight="247.0" prefWidth="576.0" text="Insert Data">
+                 <Button mnemonicParsing="false" onAction="#FileViewerButtonClick" prefHeight="205.0" prefWidth="606.0" text="Modify Database">
                <font>
                   <Font name="Chalkboard" size="36.0" />
                </font>
             </Button>
-                 <Button mnemonicParsing="false" onAction="#FileViewerButtonClick" prefHeight="205.0" prefWidth="606.0" text="Display Data" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Chalkboard" size="36.0" />
-               </font>
-            </Button>
-                 <Button mnemonicParsing="false" onAction="#AlgorithmButtonClick" prefHeight="182.0" prefWidth="652.0" text="Execute" GridPane.columnIndex="2">
-               <font>
-                  <Font name="Chalkboard" size="36.0" />
-               </font>
-            </Button>
-                 <Button mnemonicParsing="false" onAction="#AnmationButtonClick" prefHeight="184.0" prefWidth="597.0" text="Animation" textAlignment="CENTER" GridPane.columnIndex="3">
+                 <Button mnemonicParsing="false" onAction="#AnmationButtonClick" prefHeight="184.0" prefWidth="600.0" text="Animation" textAlignment="CENTER" GridPane.columnIndex="3">
                      <font>
                          <Font name="Chalkboard" size="36.0" />
                      </font>
                  </Button>
+                 <Button mnemonicParsing="false" onAction="#ResultButtonClick" prefHeight="247.0" prefWidth="576.0" text="Show Result" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Chalkboard" size="36.0" />
+               </font>
+            </Button>
+                 <Button mnemonicParsing="false" onAction="#AlgorithmButtonClick" prefHeight="182.0" prefWidth="652.0" text="Execute" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Chalkboard" size="36.0" />
+               </font>
+            </Button>
              </children>
          </GridPane>
    </children>

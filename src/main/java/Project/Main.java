@@ -14,10 +14,13 @@ import java.io.IOException;
 // 2024.07.25 @ 窩肥 : 新增pattern_mining_result留下的結果
 public class Main {
     static boolean first_open = true;
+    static boolean first_open2 = true;
     public static void main( String[] args ) {
         if (args.length > 0) {
             try {
                 int MGT = Integer.parseInt(args[0]);
+                first_open = true;
+                first_open2 = true;
                 Main_Procedure(MGT);
             } catch (NumberFormatException e) {
                 System.out.println("The first argument must be an integer.");
@@ -34,7 +37,11 @@ public class Main {
 
         Construct_PDB(LINE_table, EI_list, Product_DB); // After this function, we get LINE_table, EI_list according to previous Database.
         // Calculate MGT (ps.已經當參數傳入了)
-
+        ArrayList<EP> EI_list_remain = new ArrayList<EP>();
+        for(EP ei:EI_list){
+            if(ei.gain >= MGT)
+                EI_list_remain.add(ei);
+        }
         // 把EI_list中小於MGT的item放進新的EI_list_new
         ArrayList<EP> EI_list_new = new ArrayList<EP>();
         for(EP ei:EI_list){     // EI_list已經sort過了
@@ -46,8 +53,9 @@ public class Main {
             }
         }
         // R: Erasable Patterns , R <- R U EI_list_new
+        larger_MGT_output(EI_list_remain);
         ArrayList<EP> R = new ArrayList<EP>();
-        for(EP ei:EI_list_new){     
+        for(EP ei:EI_list_new){
             R.add(new EP(ei.pattern, ei.dPIDs, ei.gain));
         }
         // 印出EI_list_new與R的內容
@@ -64,7 +72,7 @@ public class Main {
         for(Product p:Product_DB){
             for(char it:p.items){
                 // p 是每一個 product , it 是每一個item
-                
+
                 // 判斷有沒有在EI list裡
                 boolean found = false;
                 for(EP ei: EI_list){
@@ -138,7 +146,7 @@ public class Main {
                 // System.out.println(round-1);
                 if(EP_list_input.get(j).pattern.containsAll(intersection)){ // 結合產生新node
                     // pattern
-                    
+
                     // 這要改 (第二輪Patten Mining要產生三個item的pattern)
                     temp_pattern.addAll(EP_list_input.get(i).pattern);
                     ArrayList<Character> temp_j_pattern = new ArrayList<Character>();
@@ -171,6 +179,7 @@ public class Main {
             System.out.println("\033[33;4mRemove pattern " + ep.pattern + " (Gain of pattern over MGT).\033[0m");
             EP_list_total.removeIf(it -> ep.pattern == it.pattern); // 因為兩個ArrayList的ep是不同物件，所以無法直接EP_list_total.remove(ep)，需要判斷pattern以刪除
         }
+        larger_MGT_output(EP_list_erase);
         show_EP(EP_list_total, "EP_list_remain");   // Total在此階段儲存小於MGT的ep
         if(EP_list_total.size() != 1){
             whole_EI_list_output(EP_list_total, null);
@@ -242,7 +251,7 @@ public class Main {
 
     public static String[] LToutput_file(ArrayList<LINE_table> LINE_table){
         String Line_table_fileName = "Line_table.txt";
-        try (FileWriter writer = new FileWriter(Line_table_fileName)) {
+        try (FileWriter writer = new FileWriter(Line_table_fileName, false)) {
             // 寫入檔案
             writer.write("<LINE_table>\nPID\tprofit\n");
             System.out.println("\n<LINE_table>");
@@ -259,7 +268,7 @@ public class Main {
 
     public static String[] EIoutput_file(ArrayList<EP> EI_list){
         String EI_list_fileName = "EI_list.txt";
-        try (FileWriter writer = new FileWriter(EI_list_fileName)) {
+        try (FileWriter writer = new FileWriter(EI_list_fileName,false)) {
             // 寫入檔案
             writer.write( "item\tPID\tgain" + System.lineSeparator());
             for(EP ei:EI_list){
@@ -274,7 +283,7 @@ public class Main {
 
     public static String[] EPoutput_file(ArrayList<EP> EP_list){
         String EP_list_fileName = "EP_list.txt";
-        try (FileWriter writer = new FileWriter(EP_list_fileName)) {
+        try (FileWriter writer = new FileWriter(EP_list_fileName,false)) {
             writer.write("<EP_list>" + System.lineSeparator() + "pattern\tPIDs\tgain" + System.lineSeparator());
             for(EP ep:EP_list){
                 writer.write(ep.pattern + "\t" + ep.dPIDs + "\t" + ep.gain + System.lineSeparator());
@@ -292,7 +301,7 @@ public class Main {
                 FileWriter writer = new FileWriter(R_fileName, false); // 覆寫模式，清空文件
                 writer.write("");
                 writer.close();
-            }   
+            }
             catch (IOException e) {
                 e.printStackTrace();
             }
@@ -325,7 +334,7 @@ public class Main {
                     writer.write("----------------------------------" + System.lineSeparator());
                 }
                 writer.close();
-            }   
+            }
             catch (IOException e) {
                 e.printStackTrace();
             }
@@ -347,4 +356,33 @@ public class Main {
         }
         return null;
     }
+    public static String[] larger_MGT_output(ArrayList<EP> R ){
+        String R_fileName = "largerMGT.txt";
+        if(first_open2){
+            try {
+                FileWriter writer = new FileWriter(R_fileName, false); // 覆寫模式，清空文件
+                writer.write("pattern\t\tPIDs\t\tgain" + System.lineSeparator());
+                for(EP ei:R){
+                    writer.write(ei.pattern + "\t" + ei.dPIDs + "\t" + ei.gain + System.lineSeparator());
+                }
+                writer.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            first_open2 = false;
+        }
+        else{
+            try (FileWriter writer = new FileWriter(R_fileName,true)) { //續寫
+                for(EP ep:R){
+                    writer.write(ep.pattern + "\t" + ep.dPIDs + "\t" + ep.gain + System.lineSeparator());
+                }
+            }
+            catch (IOException e) {
+                System.out.println("發生錯誤: " + e.getMessage());
+            }
+        }
+        return null;
+    }
+
 }

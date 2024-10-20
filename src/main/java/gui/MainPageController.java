@@ -15,13 +15,9 @@ import java.io.IOException;
 import Project.Main;
 
 public class MainPageController {
+    public ImageView Outcome;
     @FXML
     private ImageView AlogorithmAnimation;
-    @FXML
-    protected void InsertDataButtonClick() throws IOException {
-        gui.InsertNewData insertNewData = new gui.InsertNewData();
-        insertNewData.start(new Stage());
-    }
     @FXML
     protected void FileViewerButtonClick() throws IOException {
         gui.FileViewer FileViewer = new gui.FileViewer();
@@ -32,7 +28,15 @@ public class MainPageController {
         gui.Algorithm Algorithm = new gui.Algorithm();
         Algorithm.start(new Stage());
     }
-
+    @FXML
+    protected void ResultButtonClick() throws IOException {
+        String imagepath = "output_image_final.png";
+        String outcome = "output_MGT_image.png";
+        Image image = new Image(Files.newInputStream(Paths.get(imagepath)));
+        Image outcomeimage = new Image(Files.newInputStream(Paths.get(outcome)));
+        AlogorithmAnimation.setImage(image);
+        Outcome.setImage(outcomeimage);
+    }
 //    int current_display = 1;
     @FXML
     protected void AnmationButtonClick() throws IOException {
@@ -51,8 +55,11 @@ public class MainPageController {
 
     public void initialize() throws IOException {
         // 加載圖片到 ImageView 中
-        String imagepath = "output_gif.gif";
+        String imagepath = "output_image_final.png";
+        String outcome = "output_MGT_image.png";
         Image image = new Image(Files.newInputStream(Paths.get(imagepath)));
+        Image outcomeimage = new Image(Files.newInputStream(Paths.get(outcome)));
         AlogorithmAnimation.setImage(image);
+        Outcome.setImage(outcomeimage);
     }
 }

@@ -113,7 +113,13 @@ for current_level in range ( 2, level + 1 ):
     plt.figure(figsize=(30, 15))
     nx.draw(G, pos=positions, with_labels=True, labels=labels, node_size=15000, node_color='lightgrey', font_size=40, font_color='black', font_weight='bold', width=4)
     plt.title("Graph Representation")
-    output_file = "output_image_" + str(current_level-1) + ".png"
+    if current_level == level :
+        output_file = "output_image_final.png"
+        png_file.append(output_file)
+        plt.savefig( output_file , format='png')
+        output_file = "output_image_" + str(current_level-1) + ".png"
+    else :
+        output_file = "output_image_" + str(current_level-1) + ".png"
     png_file.append(output_file)
     plt.savefig( output_file , format='png')
 
